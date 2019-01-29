@@ -29,7 +29,7 @@ public class SwaggerConfig {
 	private ApiInfo infoApi() {
 		return new ApiInfoBuilder()
 				.title("Odonto Web API")
-				.description("\"Sistema de prontuário online\"")
+				.description("\"Sistema elaborado para clínica odontológica, fornecendo registro de prontuários para futuros acompanhamentos\"")
 				.version("1.0")
 				.license("Licença - Open Source")
 				.licenseUrl("")

@@ -38,6 +38,7 @@ public class ProntuarioService {
 				.withMatcher("exame", match -> match.contains())
 				.withMatcher("diagPre", match -> match.contains())
 				.withMatcher("diagPos", match -> match.contains())
+				.withMatcher("tratEfetuados", match -> match.contains())
 				.withIgnoreCase()
 				.withIgnoreNullValues();
 		return repositoryProntuario.findAll(Example.of(prontuario,matcher));

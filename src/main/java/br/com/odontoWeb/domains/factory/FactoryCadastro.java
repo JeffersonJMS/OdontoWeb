@@ -3,7 +3,7 @@ package br.com.odontoWeb.domains.factory;
 import br.com.odontoWeb.domains.dto.DtoCadastro;
 import br.com.odontoWeb.domains.model.Dados;
 import br.com.odontoWeb.domains.model.Paciente;
-import br.com.odontoWeb.domains.model.Usuario;
+import br.com.odontoWeb.domains.model.Login;
 
 public class FactoryCadastro {
 	
@@ -15,36 +15,36 @@ public class FactoryCadastro {
 		dados.setTelefone(dto.getPacienteTelefone());
 		dados.setCpf(dto.getPacienteCpf());
 		dados.setRua(dto.getPacienteRua());
-		dados.setNumero(dto.getPacienteNumero());
+		dados.setNumeroCasa(dto.getPacienteNumeroCasa());
 		dados.setComplemento(dto.getPacienteComplemento());
 		dados.setCep(dto.getPacienteCep());
 		dados.setReferencia(dto.getPacienteReferencia());
 		
-		Usuario usuario = new Usuario();
-		usuario.setLogin(dto.getUsuarioLogin());
-		usuario.setSenha(dto.getUsuarioSenha());
-		usuario.setRegra(dto.getUsuarioRegra());
+		Login login = new Login();
+		login.setUsuario(dto.getLoginUsuario());
+		login.setSenha(dto.getLoginSenha());
+		login.setRegra(dto.getLoginRegra());
 		
 		Paciente paciente = new Paciente();
 		paciente.setDados(dados);
-		paciente.setUsuario(usuario);
+		paciente.setLogin(login);
 		
 		return paciente;
 	}
 
-	public static Usuario dtoParaUsuario(DtoCadastro dto) {
-		Usuario usuario = new Usuario();
-		usuario.setLogin(dto.getUsuarioLogin());
-		usuario.setSenha(dto.getUsuarioSenha());
-		usuario.setRegra(dto.getUsuarioRegra());
-		return usuario;
+	public static Login dtoParaUsuario(DtoCadastro dto) {
+		Login login = new Login();
+		login.setUsuario(dto.getLoginUsuario());
+		login.setSenha(dto.getLoginSenha());
+		login.setRegra(dto.getLoginRegra());
+		return login;
 	}
 	
-	public static DtoCadastro usuarioParaDto(Usuario usuario) {
+	public static DtoCadastro usuarioParaDto(Login login) {
 		DtoCadastro dto = new DtoCadastro();
-		dto.setUsuarioLogin(usuario.getLogin());
-		dto.setUsuarioSenha(usuario.getSenha());
-		dto.setUsuarioRegra(usuario.getRegra());
+		dto.setLoginUsuario(login.getUsuario());
+		dto.setLoginSenha(login.getSenha());
+		dto.setLoginRegra(login.getRegra());
 		return dto;
 	}
 	
@@ -55,7 +55,7 @@ public class FactoryCadastro {
 		dto.setPacienteTelefone(paciente.getDados().getTelefone());
 		dto.setPacienteCpf(paciente.getDados().getCpf());
 		dto.setPacienteRua(paciente.getDados().getRua());
-		dto.setPacienteNumero(paciente.getDados().getNumero());
+		dto.setPacienteNumeroCasa(paciente.getDados().getNumeroCasa());
 		dto.setPacienteComplemento(paciente.getDados().getComplemento());
 		dto.setPacienteCep(paciente.getDados().getCep());
 		dto.setPacienteReferencia(paciente.getDados().getReferencia());

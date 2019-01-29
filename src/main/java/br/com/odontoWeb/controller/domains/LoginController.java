@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.odontoWeb.domains.model.Usuario;
+import br.com.odontoWeb.domains.model.Login;
 import br.com.odontoWeb.service.domains.FuncionarioService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,42 +21,42 @@ import io.swagger.annotations.ApiOperation;
 @Validated
 @CrossOrigin
 @RestController
-@RequestMapping("/usuarios")
-@Api(tags = "Controller de Usuários", description = "Ações pertencentes ao usuário")
-public class UsuarioController {
+@RequestMapping("/logins")
+@Api(tags = "Controller de Logins", description = "Ações pertencentes ao logins de pacientes,funcionários e ADMIN")
+public class LoginController {
 
-	FuncionarioService service;
+	FuncionarioService serviceFuncionario;
 	
 	@Autowired
-	public UsuarioController(FuncionarioService service) {
-		this.service = service;
+	public LoginController(FuncionarioService serviceFuncionario) {
+		this.serviceFuncionario = serviceFuncionario;
 	}
 
 	@GetMapping
 	@ApiOperation(value = "Busca todos os usuários cadastrados")
-	public ResponseEntity<List<Usuario>> listarUsuarios(){
-		return new ResponseEntity<List<Usuario>>(service.buscarTodosFuncionarios(), HttpStatus.OK);
+	public ResponseEntity<List<Login>> listarUsuarios(){
+		return new ResponseEntity<List<Login>>(serviceFuncionario.buscarTodosFuncionarios(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
 	@ApiOperation(value = "Busca um usuário em específico por meio do seu id")
-	public ResponseEntity<Usuario> listarUsuarioID(@PathVariable String id){
-		return new ResponseEntity<Usuario>(service.buscarFuncionarioPorId(id), HttpStatus.OK);
+	public ResponseEntity<Login> listarUsuarioID(@PathVariable String id){
+		return new ResponseEntity<Login>(serviceFuncionario.buscarFuncionarioPorId(id), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ApiOperation(value = "Deleta um usuário o qual os parametros de busca tenhão correspondido")
-	public ResponseEntity<Usuario> deletarUsuario(@PathVariable String id){
-		service.deletarFuncionario(id);
+	public ResponseEntity<Login> deletarUsuario(@PathVariable String id){
+		serviceFuncionario.deletarFuncionario(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	public FuncionarioService getService() {
-		return service;
+		return serviceFuncionario;
 	}
 
-	public void setService(FuncionarioService service) {
-		this.service = service;
+	public void setService(FuncionarioService serviceFuncionario) {
+		this.serviceFuncionario = serviceFuncionario;
 	}
 	
 }

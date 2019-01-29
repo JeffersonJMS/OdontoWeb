@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
 @Validated
 @CrossOrigin
 @RestController
-@RequestMapping("/pac/cadastro")
+@RequestMapping("/cadastro/paciente")
 @Api(tags = "Controller de cadastro de pacientes", description = "Cadastra futuros Pacientes no sistema")
 public class PacCadastroController {
 	
@@ -33,7 +33,7 @@ public class PacCadastroController {
 	@PostMapping
 	@ApiOperation(value = "Recebe objeto DTO para ser utilizado para cadastro de um Paciente")
 	public ResponseEntity<DtoCadastro> cadastrarPac(@RequestBody DtoCadastro dto){
-		dto.setUsuarioRegra(Regras.PACIENTE);
+		dto.setLoginRegra(Regras.PACIENTE);
 		return new ResponseEntity<DtoCadastro>(serviceCadastro.cadastrar(dto), HttpStatus.CREATED);
 	}
 

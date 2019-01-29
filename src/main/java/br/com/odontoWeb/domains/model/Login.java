@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Document
-public class Usuario {
+public class Login {
 
 	@Id
 	private String id;
@@ -23,7 +23,7 @@ public class Usuario {
 	@Indexed(unique = true)
 	@NotBlank(message = "{usuario.login.notblank}")
 	@Size(min = 4, max = 20, message = "{usuario.login.size}")
-	private String login;
+	private String usuario;
 	
 	@NotBlank(message = "{usuario.senha.notblank}")
 	@Size(min = 4, max = 15, message = "{usuario.senha.size}")

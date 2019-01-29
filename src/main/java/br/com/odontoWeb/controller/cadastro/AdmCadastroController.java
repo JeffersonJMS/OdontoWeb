@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
 @Validated
 @CrossOrigin
 @RestController
-@RequestMapping("/adm/cadastro")
+@RequestMapping("/cadastro/admin")
 @Api(tags = "Controller de cadastro de ADMIN", description = "Cadastra futuros administradores no sistema")
 public class AdmCadastroController {
 	
@@ -33,7 +33,7 @@ public class AdmCadastroController {
 	@PostMapping
 	@ApiOperation(value = "Recebe Objeto DTO para ser utilizado para cadastro de um administrador")
 	public ResponseEntity<DtoCadastro> cadastrarAdm(@RequestBody DtoCadastro dto){
-		dto.setUsuarioRegra(Regras.ADMIN);
+		dto.setLoginRegra(Regras.ADMIN);
 		return new ResponseEntity<DtoCadastro>(serviceCadastro.cadastrar(dto), HttpStatus.CREATED);
 	}
 

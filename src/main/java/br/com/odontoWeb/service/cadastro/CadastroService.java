@@ -6,45 +6,45 @@ import org.springframework.stereotype.Service;
 import br.com.odontoWeb.domains.dto.DtoCadastro;
 import br.com.odontoWeb.domains.factory.FactoryCadastro;
 import br.com.odontoWeb.domains.model.Paciente;
-import br.com.odontoWeb.domains.model.Usuario;
+import br.com.odontoWeb.domains.model.Login;
 import br.com.odontoWeb.service.domains.FuncionarioService;
 import br.com.odontoWeb.service.domains.PacienteService;
 
 @Service
 public class CadastroService {
 
-	PacienteService pacienteservice;
+	PacienteService pacienteService;
 	FuncionarioService usuarioService;
 
 	@Autowired
-	public CadastroService(PacienteService pacienteservice, FuncionarioService usuarioService) {
-		this.pacienteservice = pacienteservice;
+	public CadastroService(PacienteService pacienteService, FuncionarioService usuarioService) {
+		this.pacienteService = pacienteService;
 		this.usuarioService = usuarioService;
 	}
 
 	public DtoCadastro cadastrar(DtoCadastro dto) {
 		
-		if (dto.getUsuarioRegra().isAdmin()) {
-			Usuario usuario = FactoryCadastro.dtoParaUsuario(dto);
-			usuarioService.criarFuncionario(usuario);
+		if (dto.getLoginRegra().isAdmin()) {
+			Login login = FactoryCadastro.dtoParaUsuario(dto);
+			usuarioService.criarFuncionario(login);
 			
-		} else if (dto.getUsuarioRegra().isFuncionario()) {
-			Usuario usuario = FactoryCadastro.dtoParaUsuario(dto);
-			usuarioService.criarFuncionario(usuario);
+		} else if (dto.getLoginRegra().isFuncionario()) {
+			Login login = FactoryCadastro.dtoParaUsuario(dto);
+			usuarioService.criarFuncionario(login);
 			
-		} else if (dto.getUsuarioRegra().isPaciente()) {
+		} else if (dto.getLoginRegra().isPaciente()) {
 			Paciente paciente = FactoryCadastro.dtoParaPaciente(dto);
-			pacienteservice.criarPaciente(paciente);
+			pacienteService.criarPaciente(paciente);
 		}
 		return dto;
 	}
 
 	public PacienteService getPacienteservice() {
-		return pacienteservice;
+		return pacienteService;
 	}
 
-	public void setPacienteservice(PacienteService pacienteservice) {
-		this.pacienteservice = pacienteservice;
+	public void setPacienteservice(PacienteService pacienteService) {
+		this.pacienteService = pacienteService;
 	}
 
 	public FuncionarioService getUsuarioService() {

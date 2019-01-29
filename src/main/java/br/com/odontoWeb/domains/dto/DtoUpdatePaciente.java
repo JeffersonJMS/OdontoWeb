@@ -21,7 +21,7 @@ public class DtoUpdatePaciente implements Serializable{
 	
 	private String ruaDados;
 	
-	private int numeroDados;
+	private int numeroCasaDados;
 	
 	private String complementoDados;
 	

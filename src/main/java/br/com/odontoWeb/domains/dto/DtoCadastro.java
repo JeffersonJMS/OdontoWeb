@@ -22,7 +22,7 @@ public class DtoCadastro implements Serializable{
 	
 	private String pacienteRua;
 	
-	private int pacienteNumero;
+	private int pacienteNumeroCasa;
 	
 	private String pacienteComplemento;
 	
@@ -30,10 +30,10 @@ public class DtoCadastro implements Serializable{
 	
 	private String pacienteReferencia;
 	
-	private String usuarioLogin;
+	private String loginUsuario;
 	
-	private String usuarioSenha;
+	private String loginSenha;
 	
-	private Regras usuarioRegra;
+	private Regras loginRegra;
 	
 }

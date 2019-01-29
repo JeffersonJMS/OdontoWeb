@@ -36,7 +36,7 @@ public class PacienteService {
 	}
 
 	public Paciente criarPaciente(Paciente paciente) {
-		usuarioService.criarFuncionario(paciente.getUsuario());
+		usuarioService.criarFuncionario(paciente.getLogin());
 		return repository.insert(paciente);
 	}
 
@@ -47,7 +47,7 @@ public class PacienteService {
 		pacienteTemp.getDados().setTelefone(dto.getTelefoneDados());
 		pacienteTemp.getDados().setCpf(dto.getCpfDados());
 		pacienteTemp.getDados().setRua(dto.getRuaDados());
-		pacienteTemp.getDados().setNumero(dto.getNumeroDados());
+		pacienteTemp.getDados().setNumeroCasa(dto.getNumeroCasaDados());
 		pacienteTemp.getDados().setComplemento(dto.getComplementoDados());
 		pacienteTemp.getDados().setCep(dto.getCepDados());
 		pacienteTemp.getDados().setReferencia(dto.getReferenciaDados());
@@ -59,7 +59,6 @@ public class PacienteService {
 		repository.deleteById(id);
 	}
 	
-//	fazer esse metodo entrar em um caminho
 	public List<Paciente> buscarPaciente(Paciente paciente){
 		ExampleMatcher macther = ExampleMatcher.matchingAll()
 				.withMatcher("nome", match -> match.contains())

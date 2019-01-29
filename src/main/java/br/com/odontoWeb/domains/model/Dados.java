@@ -29,7 +29,8 @@ public class Dados {
 
 	@Indexed(unique = true)
 	@NotNull(message  = "{dados.cpf.notnull}")
-	@CPF(message = "{dados.cpf.cpf}")
+	@Size(min = 11, max = 11, message = "{dados.cpf.size}")
+	/*@CPF(message = "{dados.cpf.cpf}")*/
 	private String cpf;
 	
 	@NotBlank(message = "{dados.rua.notblank}")
@@ -37,12 +38,13 @@ public class Dados {
 	
 	@NotNull(message  = "{dados.numero.notnull}")
 	@Positive(message = "{dados.numero.positive}")
-	private int numero;
+	private int numeroCasa;
 	
 	private String complemento;
 	
 	@NotNull(message = "{dados.cep.notnull}")
 	@Positive(message = "{dados.cep}")
+	@Size(min = 8, max = 8, message = "{dados.cep.size}")
 	private int cep;
 	
 	private String referencia;

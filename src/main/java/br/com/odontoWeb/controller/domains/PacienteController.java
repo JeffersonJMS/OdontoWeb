@@ -39,28 +39,28 @@ public class PacienteController {
 	public PacienteController(PacienteService service) {
 		this.servicePaciente = service;
 	}
-
+ 
 	@GetMapping
 	@ApiOperation(value = "Busca todos os pacientes cadastrados")
-	public ResponseEntity<List<Paciente>> listarClientes() {
+	public ResponseEntity<List<Paciente>> listarPacientes() {
 		return new ResponseEntity<List<Paciente>>(servicePaciente.buscarTodosPacientes(), HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
 	@ApiOperation(value = "Busca um paciente em específico pelo seu id")
-	public ResponseEntity<Paciente> listarClienteId(@PathVariable String id) {
+	public ResponseEntity<Paciente> listarPacienteId(@PathVariable String id) {
 		return new ResponseEntity<Paciente>(servicePaciente.buscarPacientePorId(id), HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")
 	@ApiOperation(value = "Atualiza os dados de um paciente com base no id")
-	public ResponseEntity<Paciente> atualizarCliente(@RequestBody DtoUpdatePaciente dto, @PathVariable String id) {
+	public ResponseEntity<Paciente> atualizarPaciente(@RequestBody DtoUpdatePaciente dto, @PathVariable String id) {
 		return new ResponseEntity<Paciente>(servicePaciente.atualizarPaciente(dto, id), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
 	@ApiOperation(value = "Deleta um paciente tomando como referência seu id")
-	public ResponseEntity<Paciente> deletarCliente(@PathVariable String id) {
+	public ResponseEntity<Paciente> deletarPaciente(@PathVariable String id) {
 		servicePaciente.deletarPaciente(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

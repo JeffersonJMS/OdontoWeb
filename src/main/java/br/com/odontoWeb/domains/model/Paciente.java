@@ -29,5 +29,5 @@ public class Paciente {
 	
 	@Valid
 	@DBRef
-	private Usuario usuario;
+	private Login login;
 }

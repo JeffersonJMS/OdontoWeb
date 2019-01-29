@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.odontoWeb.domains.dto.DtoMudarSenha;
-import br.com.odontoWeb.domains.model.Usuario;
+import br.com.odontoWeb.domains.model.Login;
 import br.com.odontoWeb.service.domains.FuncionarioService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,8 +29,8 @@ public class MudarSenhaController {
 
 	@PatchMapping("/{id}")
 	@ApiOperation(value = "Modificar a senha de um usuário presente no sistema")
-	public ResponseEntity<Usuario> modificarSenha(@PathVariable String id, @RequestBody DtoMudarSenha dto) {
-		return new ResponseEntity<Usuario>(serviceFuncionario.modificarSenha(id, dto), HttpStatus.OK);
+	public ResponseEntity<Login> modificarSenha(@PathVariable String id, @RequestBody DtoMudarSenha dto) {
+		return new ResponseEntity<Login>(serviceFuncionario.modificarSenha(id, dto), HttpStatus.OK);
 	}
 
 	public FuncionarioService getServiceFuncionario() {

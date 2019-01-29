@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import br.com.odontoWeb.domains.dto.DtoMudarSenha;
-import br.com.odontoWeb.domains.model.Usuario;
+import br.com.odontoWeb.domains.model.Login;
 import br.com.odontoWeb.exceptions.BadRequestException;
 import br.com.odontoWeb.exceptions.NotFoundException;
 import br.com.odontoWeb.repository.FuncionarioRepository;
@@ -23,16 +23,16 @@ public class FuncionarioService{
 		this.repository = repository;
 	}
 
-	public List<Usuario> buscarTodosFuncionarios(){
+	public List<Login> buscarTodosFuncionarios(){
 		return repository.findAll();
 	}
 
-	public Usuario buscarFuncionarioPorId(String id) {
+	public Login buscarFuncionarioPorId(String id) {
 		return repository.findById(id).orElseThrow(() -> new NotFoundException());
 	}
 
-	public Usuario criarFuncionario(Usuario usuario) {
-		return repository.save(usuario);
+	public Login criarFuncionario(Login login) {
+		return repository.save(login);
 	}
 
 	public void deletarFuncionario(String id){
@@ -40,11 +40,11 @@ public class FuncionarioService{
 		repository.deleteById(id);
 	}
 
-	public Usuario modificarSenha(String id, DtoMudarSenha dto) throws BadRequestException{
-		Usuario usuarioTemp = this.buscarFuncionarioPorId(id);
-		if(usuarioTemp.getSenha().equals(dto.getAntigaSenha())) {
-			usuarioTemp.setSenha(dto.getNovaSenha());
-			return repository.save(usuarioTemp);
+	public Login modificarSenha(String id, DtoMudarSenha dto) throws BadRequestException{
+		Login loginTemp = this.buscarFuncionarioPorId(id);
+		if(loginTemp.getSenha().equals(dto.getAntigaSenha())) {
+			loginTemp.setSenha(dto.getNovaSenha());
+			return repository.save(loginTemp);
 		}
 		throw new BadRequestException();
 	}
